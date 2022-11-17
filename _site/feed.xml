@@ -1,61 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es-ES"><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="es-ES" /><updated>2022-11-17T11:35:21-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jdiaza</title><subtitle>Ingeniero en constante formacion.</subtitle><entry><title type="html">Algoritmo KNN</title><link href="http://localhost:4000/posts/Algoritmo-knn/" rel="alternate" type="text/html" title="Algoritmo KNN" /><published>2022-11-16T03:10:00-03:00</published><updated>2022-11-16T03:10:00-03:00</updated><id>http://localhost:4000/posts/Algoritmo-knn</id><content type="html" xml:base="http://localhost:4000/posts/Algoritmo-knn/"><![CDATA[<h4 id="entendiendo-knn"><strong>Entendiendo KNN</strong></h4>
 
+<p>Podemos entender KNN como el algoritmo K de vecinos mas cercanos. Esto significa que para evaluar la categoría de un valor consideramos las muestras más cercanas a esta. Es uno de los algoritmos de aprendizaje automaticos supervisados más sencillos de entender. Es especialmente considerado cuando se plantea un problema sencillo y con un conjunto de muestras pequeño. Se le conoce como un algoritmo flojo.</p>
 
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <id>http://localhost:4000/</id>
-  <title>Jdiaza</title>
-  <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2022-11-17T11:18:57-03:00</updated>
-  <author>
-    <name>jdiazaraya</name>
-    <uri>http://localhost:4000/</uri>
-  </author>
-  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
-  <link rel="alternate" type="text/html" hreflang="es-ES"
-    href="http://localhost:4000/"/>
-  <generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator>
-  <rights> © 2022 jdiazaraya </rights>
-  <icon>/assets/img/favicons/favicon.ico</icon>
-  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+<h4 id="1--distancia-euclidea"><strong>1.- Distancia euclidea</strong></h4>
 
+<p><img src="/assets/img/knn/distanciaeuclidea.png" alt="Desktop View" /></p>
 
-  
-  <entry>
-    <title>Algoritmo KNN</title>
-    <link href="http://localhost:4000/posts/Algoritmo-knn/" rel="alternate" type="text/html" title="Algoritmo KNN" />
-    <published>2022-11-16T03:10:00-03:00</published>
-  
-    <updated>2022-11-16T03:10:00-03:00</updated>
-  
-    <id>http://localhost:4000/posts/Algoritmo-knn/</id>
-    <content src="http://localhost:4000/posts/Algoritmo-knn/" />
-    <author>
-      <name>jdiaz</name>
-    </author>
+<p>Podemos calcular la distancia entre dos puntos a traves de la formula de la distancia euclidea que se representa como:</p>
 
-  
-    
-    <category term="Apuntes" />
-    
-    <category term="Machine-learning" />
-    
-  
+\[DistanciaEuclidea = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}\]
 
-  
-    <summary>
-      
+<h4 id="2--resumen-de-algoritmo-knn"><strong>2.- Resumen de algoritmo KNN</strong></h4>
 
+<p>El presente algoritmo nos permite predecir a que grupo pertenece una muestra en base a su comportamiento comparandola con un grupo de muestra que se conoce su clasificación. Para esto se usa el siguiente proceso:</p>
 
+<p><img src="/assets/img/knn/diagramaknn.png" alt="Desktop View" /></p>
 
+<p><em>Explicando esto de forma mas detallada</em></p>
 
+<p><strong>Paso 1: Calcular las distancias</strong></p>
 
-      Entendiendo KNN
+<p>Para iniciar se carga los datos categorizados para poder establecer un punto de comparacion inicial.</p>
 
-Podemos entender KNN como el algoritmo K de vecinos mas cercanos. Esto significa que para evaluar la categoría de un valor consideramos las muestras más cercanas a esta. Es uno de los algoritmos de aprendizaje automaticos supervisados más sencillos de entender. Es especialmente considerado cuando se plantea un problema sencillo y con un conjunto de muestras pequeño. Se le conoc...
-    </summary>
-  
+<p><img src="/assets/img/knn/vecinosk.png" alt="Desktop View" /></p>
 
-  </entry>
+<p>El grafico representa un modelo donde se consideran solo dos variables. Se establecen dos categorias a las que un dato desconocido puede pertenecer <em>rojo</em> y <em>azul</em>.</p>
 
-</feed>
+<p>En este caso buscamos conocer a que grupo pertenece un nuevo dato no categorizado, para esto calculamos la distancia entre nuestro punto sin etiqueta y nuestros puntos categorizados para saber su relación.</p>
 
+<p><strong>Paso 2: Seleccionar los k vecinos mas cercanos</strong></p>
 
+<p>Una vez calculados las distancias, ordenaremos los puntos considerando con prioridad a su cercanía. Finalmente consideraremos los k numeros mas cercanos a nuestro desconocido punto de interes sin etiqueta.</p>
+
+<p><img src="/assets/img/knn/vecinosk2.jpeg" alt="Desktop View" /></p>
+
+<p>En la imagen superior consideramos los 3 puntos mas cercanos (K=3). De estos puntos dos perteneces a la categoria roja y uno a la categoria azul. El algoritmo identifica el punto nuevo como al grupo que tiene mayoria dentro de la muestra k por lo que el modelo determinara que corresponde al grupo rojo.</p>
+
+<h4 id="3--por-que-consideramos-knn-como-algoritmo-flojo"><strong>3.- ¿Por que consideramos KNN como “Algoritmo flojo”?</strong></h4>
+
+<p>KNN no tiene periodo de entrenamiento. Para cada prediccion el algoritmo necesita pasar por el mismo proceso. No hay un proceso en que esta eleccion pueda ser optimizada. Cuando el conjunto de datos es mas grande, el proceso requerirá mas tiempo.</p>
+
+<h4 id="4--ejemplo-de-implementacion-de-knn-paso-a-paso"><strong>4.- Ejemplo de implementacion de KNN paso a paso</strong></h4>
+
+<p>Acontinuacion se detalla un ejemplo de como se ejecuta una implementacion de KNN</p>
+
+<p><em>Importar modulos</em></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="c1">#Importar modulos requeridos
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">mode</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><em>Crear una funcion para calcular distancias</em></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="c1">#Distancia Ecleudiana
+</span><span class="k">def</span> <span class="nf">euclidean</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">):</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">((</span><span class="n">p1</span><span class="o">-</span><span class="n">p2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">dist</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Esta funcion nos permitira calcular las distancias tal como se indica en la formula de Euclides.</p>
+
+<p>Luego haremos una funcion que nos permita guardar las distancia entre cada punto de referencia y nuestro punto de interes y ordenarlos segun su distancia. Finalmente seleccionaremos el grupo que tiene mayoria de cercania.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="rouge-code"><pre><span class="c1">#Funcion para calcular KNN
+</span><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y</span> <span class="p">,</span> <span class="n">x_input</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">op_labels</span> <span class="o">=</span> <span class="p">[]</span>
+     
+    <span class="c1">#Loop para clasificar datos
+</span>    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">x_input</span><span class="p">:</span> 
+         
+        <span class="c1">#Array para almacenar distancias
+</span>        <span class="n">point_dist</span> <span class="o">=</span> <span class="p">[]</span>
+         
+        
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_train</span><span class="p">)):</span> 
+            <span class="n">distances</span> <span class="o">=</span> <span class="n">euclidean</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="n">j</span><span class="p">,:])</span> <span class="p">,</span> <span class="n">item</span><span class="p">)</span> 
+            <span class="c1">#calcula Distancia
+</span>            <span class="n">point_dist</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
+            
+        <span class="n">point_dist</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">point_dist</span><span class="p">)</span> 
+        
+        <span class="c1">#Ordena array manteniendo k puntos prioritarios
+</span>        <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">point_dist</span><span class="p">)[:</span><span class="n">k</span><span class="p">]</span> 
+         
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">dist</span><span class="p">]</span>
+         
+        <span class="c1">#Voto mayoritario
+</span>        <span class="n">lab</span> <span class="o">=</span> <span class="n">mode</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> 
+        <span class="n">lab</span> <span class="o">=</span> <span class="n">lab</span><span class="p">.</span><span class="n">mode</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">op_labels</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">lab</span><span class="p">)</span>
+ 
+    <span class="k">return</span> <span class="n">op_labels</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Creamos una funcion <em>predict</em> para encontrar la prediccion para un grupo de muestras.</p>]]></content><author><name>J Díaz</name></author><category term="Apuntes" /><category term="Machine-learning" /><category term="python" /><category term="aprendizaje-supervisado" /><category term="algoritmo-flojo" /><category term="machine-learning" /><category term="codigo" /><summary type="html"><![CDATA[Entendiendo KNN]]></summary></entry></feed>
