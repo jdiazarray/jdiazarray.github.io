@@ -3,7 +3,7 @@ title: Algoritmo KNN
 author: jdiaz
 date: 2022-11-16 14:10:00 +0800
 categories: [Apuntes, Machine-learning]
-tags: [python, aprendizaje-supervisado, algoritmo-flojo, machine-learning, codigo]
+tags: [python, aprendizaje-supervisado, aprendizaje-vago, machine-learning, codigo]
 render_with_liquid: false
 math: true
 mermaid: true
@@ -49,7 +49,7 @@ Una vez calculados las distancias, ordenaremos los puntos considerando con prior
 
 En la imagen superior consideramos los 3 puntos mas cercanos (K=3). De estos puntos dos perteneces a la categoria roja y uno a la categoria azul. El algoritmo identifica el punto nuevo como al grupo que tiene mayoria dentro de la muestra k por lo que el modelo determinara que corresponde al grupo rojo.
 
-#### **3.- ¿Por que consideramos KNN como "Algoritmo flojo"?**
+#### **3.- ¿Por que consideramos KNN como "aprendizaje vago"?**
 
 KNN no tiene periodo de entrenamiento. Para cada prediccion el algoritmo necesita pasar por el mismo proceso. No hay un proceso en que esta eleccion pueda ser optimizada. Cuando el conjunto de datos es mas grande, el proceso requerirá mas tiempo.
 

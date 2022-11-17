@@ -19,7 +19,7 @@ timezone:
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Jdiaza                         # the main title
+title: Jdiazarray                        # the main title
 
 tagline: Ingeniero en constante formacion.  # it will display as the sub-title
 
@@ -38,7 +38,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: jdiazaraya
+  name: jdiazarray
   email: juandiazaraya@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
@@ -81,7 +81,7 @@ theme_mode:   # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: 'assets\img\avatar.jpg' 
+avatar: https://avatars.githubusercontent.com/u/62775060?v=4
 
 # boolean type, the global switch for ToC in posts.
 toc: true
