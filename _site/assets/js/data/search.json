@@ -1,0 +1,19 @@
+[
+  
+  {
+    "title": "Algoritmo KNN",
+    "url": "/posts/Algoritmo-knn/",
+    "categories": "Apuntes, Machine-learning",
+    "tags": "python, aprendizaje-supervisado, algoritmo-flojo, machine-learning, codigo",
+    "date": "2022-11-16 03:10:00 -0300",
+    
+
+
+
+
+
+    "snippet": "Entendiendo KNNPodemos entender KNN como el algoritmo K de vecinos mas cercanos. Esto significa que para evaluar la categoría de un valor consideramos las muestras más cercanas a esta. Es uno de lo..."
+  }
+  
+]
+
